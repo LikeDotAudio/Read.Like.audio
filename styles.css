@@ -63,7 +63,8 @@ body {
 }
 
 .header-title h1 a:hover {
-    color: var(--accent);
+    color: rgb(244, 144, 44);
+    text-shadow: 0 0 10px rgba(244, 144, 44, 0.6);
 }
 
 .controls-section {
