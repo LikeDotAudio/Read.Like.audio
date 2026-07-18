@@ -54,7 +54,16 @@ body {
 .header-title h1 {
     font-size: 1.2rem;
     font-weight: 600;
+}
+
+.header-title h1 a {
     color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.header-title h1 a:hover {
+    color: var(--accent);
 }
 
 .controls-section {
