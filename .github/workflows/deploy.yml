@@ -1,0 +1,41 @@
+name: Deploy via FTPS
+
+on:
+  push:
+    branches:
+      - main
+      - master # Triggers on push to main or master
+
+jobs:
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Sync files via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # Your server address (e.g. ftp.yourdomain.com)
+          server: ${{ secrets.FTP_SERVER }}
+          
+          # Your FTP username
+          username: ${{ secrets.FTP_USERNAME }}
+          
+          # Your FTP password
+          password: ${{ secrets.FTP_PASSWORD }}
+          
+          # Enforce FTPS protocol
+          protocol: ftps
+          
+          # Optional: The path on your server to upload to (e.g. /public_html/)
+          server-dir: ./
+          
+          # Ensures it ignores the .git folder and github actions files
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            README.md
