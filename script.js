@@ -24,6 +24,10 @@ if (localStorage.getItem(SAVED_TEXT_KEY)) {
 textInput.addEventListener('input', () => {
     localStorage.setItem(SAVED_TEXT_KEY, textInput.value);
     localStorage.setItem(SAVED_INDEX_KEY, '0');
+    
+    if (textInput.value.trim() === '') {
+        btnFormat.textContent = 'Format Text';
+    }
 });
 
 // Text Size logic
@@ -113,13 +117,20 @@ function formatText() {
 }
 
 btnFormat.addEventListener('click', () => {
+    if (btnFormat.textContent === 'Clear Text') {
+        textInput.value = '';
+        localStorage.setItem(SAVED_TEXT_KEY, '');
+        localStorage.setItem(SAVED_INDEX_KEY, '0');
+        btnFormat.textContent = 'Format Text';
+        return;
+    }
+
     formatText();
     
     // Visual feedback
-    const originalText = btnFormat.textContent;
     btnFormat.textContent = 'Formatted!';
     setTimeout(() => {
-        btnFormat.textContent = originalText;
+        btnFormat.textContent = 'Clear Text';
     }, 1500);
 });
 
@@ -129,10 +140,9 @@ textInput.addEventListener('paste', () => {
         formatText();
         
         // Brief visual feedback on the button to show it happened automatically
-        const originalText = btnFormat.textContent;
         btnFormat.textContent = 'Auto-Formatted!';
         setTimeout(() => {
-            btnFormat.textContent = originalText;
+            btnFormat.textContent = 'Clear Text';
         }, 1500);
     }, 10);
 });
