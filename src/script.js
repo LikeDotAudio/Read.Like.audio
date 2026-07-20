@@ -38,6 +38,7 @@ function formatText() {
     // Special character behaviours
     text = text.replace(/-{2,}/g, ' '); // --- is not read as dash dash dash
     text = text.replace(/\|/g, '');     // | PIPE is not said out loud
+    text = text.replace(/->|<-|→|←/g, ' '); // Avoid reading arrows
     
     // Units formatting
     text = text.replace(/(\d)\s*ms\b/gi, '$1 milliseconds'); // 6.7ms -> 6.7 milliseconds
