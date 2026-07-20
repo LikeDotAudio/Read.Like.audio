@@ -156,9 +156,16 @@ function buildPrompterUI(toc) {
     let lineInChapter = 0;
 
     allChunks.forEach((chunk, index) => {
-        if (chunk.isHeading && chunk.level === 1) {
-            currentChapterCount++;
-            lineInChapter = 1;
+        if (chunk.isHeading) {
+            if (chunk.level === 1) {
+                currentChapterCount = 0;
+                lineInChapter = 1;
+            } else if (chunk.level === 2) {
+                currentChapterCount++;
+                lineInChapter = 1;
+            } else {
+                lineInChapter++;
+            }
         } else {
             lineInChapter++;
         }
@@ -289,7 +296,7 @@ function playChunk(index) {
         // Calculate chapter count up to this chunk
         let chapterCount = 0;
         for (let i = 0; i <= index; i++) {
-            if (allChunks[i].isHeading && allChunks[i].level === 1) chapterCount++;
+            if (allChunks[i].isHeading && (allChunks[i].level === 1 || allChunks[i].level === 2)) chapterCount++;
         }
         
         // Best-effort selection of male and female English voices
