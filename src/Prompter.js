@@ -279,7 +279,7 @@ function playChunk(index) {
         // Calculate chapter count up to this chunk
         let chapterCount = 0;
         for (let i = 0; i <= index; i++) {
-            if (allChunks[i].isHeading) chapterCount++;
+            if (allChunks[i].isHeading && allChunks[i].level === 1) chapterCount++;
         }
         
         // Best-effort selection of male and female English voices
