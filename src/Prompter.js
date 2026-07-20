@@ -21,12 +21,30 @@ function parseTextToChunks(rawText) {
         // (prevents breaking on filenames like NAME.DN)
         let rawChunks = textToProcess.split(/([.!?]+(?=\s|$))/);
         let sentences = [];
+        let tempSentence = "";
+        
         for (let j = 0; j < rawChunks.length; j += 2) {
             let sentence = rawChunks[j];
             let punct = rawChunks[j+1] || "";
-            if ((sentence + punct).trim().length > 0) {
-                sentences.push((sentence + punct).trim());
+            
+            let combined = sentence + punct;
+            if (combined.trim().length === 0) continue;
+            
+            // Re-merge chunks if they end with a common abbreviation or single initial
+            let abbrMatch = sentence.match(/\b(Mr|Mrs|Ms|Dr|Prof|Sr|Jr|Inc|Ltd|Co|Corp|vs|etc|St|Mt|Rev|Hon|Capt|Col|Gen|Lieut|Sgt|Cpl|Maj|Pte)\s*$/i);
+            let initialMatch = sentence.match(/(^|\s)([A-Za-z])\s*$/);
+            
+            if (abbrMatch || initialMatch) {
+                tempSentence += combined;
+            } else {
+                tempSentence += combined;
+                sentences.push(tempSentence.trim());
+                tempSentence = "";
             }
+        }
+        
+        if (tempSentence.trim().length > 0) {
+            sentences.push(tempSentence.trim());
         }
         
         sentences.forEach(s => {
