@@ -152,7 +152,17 @@ function buildPrompterUI(toc) {
         tocSidebar.style.display = 'none';
     }
 
+    let currentChapterCount = 0;
+    let lineInChapter = 0;
+
     allChunks.forEach((chunk, index) => {
+        if (chunk.isHeading && chunk.level === 1) {
+            currentChapterCount++;
+            lineInChapter = 1;
+        } else {
+            lineInChapter++;
+        }
+
         const lineDiv = document.createElement('div');
         lineDiv.className = 'prompter-line';
         lineDiv.id = `prompter-line-${index}`;
@@ -165,7 +175,7 @@ function buildPrompterUI(toc) {
         
         const numDiv = document.createElement('div');
         numDiv.className = 'line-number';
-        numDiv.textContent = index + 1;
+        numDiv.textContent = `${currentChapterCount}.${lineInChapter}`;
         
         const textDiv = document.createElement('div');
         textDiv.className = 'line-text';
