@@ -1,0 +1,29 @@
+name: Deploy to FTPS Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  ftp-deploy:
+    name: Deploy via FTPS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Sync files to FTPS Server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # The local directory to upload (the src folder containing index.html, etc)
+          local-dir: ./src/
+          # Optional: The directory on your server where files should be uploaded. 
+          # You might need to change this if your site is not served from the root.
+          # server-dir: /public_html/
+          
+          # Use FTPS
+          protocol: ftps
