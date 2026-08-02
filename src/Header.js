@@ -7,7 +7,6 @@ const btnFormat = document.getElementById('btn-format');
 const btnClearText = document.getElementById('btn-clear-text');
 const btnPlay = document.getElementById('btn-play');
 const btnPause = document.getElementById('btn-pause');
-const btnStop = document.getElementById('btn-stop');
 const sizeSelect = document.getElementById('size-select');
 const alternateVoiceCheckbox = document.getElementById('alternate-voice-checkbox');
 
@@ -103,17 +102,11 @@ btnPause.addEventListener('click', () => {
         synth.pause();
     }
 });
-
-btnStop.addEventListener('click', () => {
-    isManuallyStopped = true;
-    synth.cancel();
-    
-    // Return to Edit Mode
-    textInput.style.display = 'block';
-    prompterView.style.display = 'none';
-    document.getElementById('toc-sidebar').style.display = 'none';
-    currentChunkIndex = 0;
-    allChunks = [];
-});
-
-
+// Sync play button state with speech synthesis
+setInterval(() => {
+    if (synth && synth.speaking && !synth.paused) {
+        btnPlay.classList.add('running');
+    } else {
+        btnPlay.classList.remove('running');
+    }
+}, 200);

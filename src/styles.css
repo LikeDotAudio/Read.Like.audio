@@ -37,7 +37,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 0.5rem 1rem;
     background: var(--panel-bg);
     border-bottom: 1px solid var(--border);
@@ -48,7 +48,13 @@ body {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.header-title {
+    width: 100%;
 }
 
 .header-title h1 {
@@ -117,8 +123,8 @@ select:focus, input[type="range"]:focus {
 
 .btn {
     padding: 0.4rem 0.8rem;
-    background: rgb(244, 144, 44);
-    border: 1px solid rgb(44, 144, 244);
+    background: #000000;
+    border: 1px solid #333333;
     color: #ffffff;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -127,19 +133,34 @@ select:focus, input[type="range"]:focus {
 }
 
 .btn:hover {
-    background: rgb(224, 124, 24); /* slightly darker for hover */
-    border-color: rgb(24, 124, 224);
+    background: #111111;
+    border-color: #555555;
+}
+
+.btn:active {
+    background: rgb(244, 144, 44);
+    border-color: rgb(44, 144, 244);
 }
 
 .btn.primary {
-    /* Kept for specificity but matching requested colors */
-    background: rgb(244, 144, 44);
+    background: #000000;
     color: #ffffff;
-    border: 1px solid rgb(44, 144, 244);
+    border: 1px solid #333333;
 }
 
 .btn.primary:hover {
-    background: rgb(224, 124, 24);
+    background: #111111;
+}
+
+.btn.primary:active {
+    background: rgb(244, 144, 44);
+    border-color: rgb(44, 144, 244);
+}
+
+.btn.running {
+    background: rgb(44, 144, 244) !important;
+    border-color: rgb(44, 144, 244) !important;
+    color: #ffffff;
 }
 
 /* Main Content Area */
