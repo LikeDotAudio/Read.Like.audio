@@ -117,27 +117,29 @@ select:focus, input[type="range"]:focus {
 
 .btn {
     padding: 0.4rem 0.8rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
+    background: rgb(244, 144, 44);
+    border: 1px solid rgb(44, 144, 244);
+    color: #ffffff;
     border-radius: 4px;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, border-color 0.2s;
 }
 
 .btn:hover {
-    background: var(--border);
+    background: rgb(224, 124, 24); /* slightly darker for hover */
+    border-color: rgb(24, 124, 224);
 }
 
 .btn.primary {
-    background: var(--text-primary);
-    color: var(--bg);
-    border: none;
+    /* Kept for specificity but matching requested colors */
+    background: rgb(244, 144, 44);
+    color: #ffffff;
+    border: 1px solid rgb(44, 144, 244);
 }
 
 .btn.primary:hover {
-    background: #ffffff;
+    background: rgb(224, 124, 24);
 }
 
 /* Main Content Area */
