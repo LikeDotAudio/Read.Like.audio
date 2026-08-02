@@ -4,6 +4,7 @@ const voiceSelect = document.getElementById('voice-select');
 const rateSlider = document.getElementById('rate-slider');
 const rateValue = document.getElementById('rate-value');
 const btnFormat = document.getElementById('btn-format');
+const btnClearText = document.getElementById('btn-clear-text');
 const btnPlay = document.getElementById('btn-play');
 const btnPause = document.getElementById('btn-pause');
 const btnStop = document.getElementById('btn-stop');
@@ -73,20 +74,23 @@ rateSlider.addEventListener('input', () => {
 });
 
 btnFormat.addEventListener('click', () => {
-    if (btnFormat.textContent === 'Clear Text') {
-        textInput.value = '';
-        localStorage.setItem(SAVED_TEXT_KEY, '');
-        localStorage.setItem(SAVED_INDEX_KEY, '0');
-        btnFormat.textContent = 'Format Text';
-        return;
-    }
-
     formatText();
     
     // Visual feedback
     btnFormat.textContent = 'Formatted!';
     setTimeout(() => {
-        btnFormat.textContent = 'Clear Text';
+        btnFormat.textContent = 'Format Text';
+    }, 1500);
+});
+
+btnClearText.addEventListener('click', () => {
+    textInput.value = '';
+    localStorage.setItem(SAVED_TEXT_KEY, '');
+    localStorage.setItem(SAVED_INDEX_KEY, '0');
+    // Visual feedback
+    btnClearText.textContent = 'Cleared!';
+    setTimeout(() => {
+        btnClearText.textContent = 'Clear Text';
     }, 1500);
 });
 
