@@ -1,12 +1,18 @@
-# Read.Like.audio — Document & Specification Reader
+# Documentation Index — Read.Like.audio
 
-## 📌 Overview
-Lightweight document reader, Markdown documentation browser, PDF spec viewer, and technical manual navigator softapp.
+## 📌 Documentation Overview
+This repository contains technical documentation, architecture notes, roadmap plans, and issue tracking for `Read.Like.audio`, aligned with `APK:Documentation` standards.
 
-## 📁 Documentation Structure
-- [Plans/ROADMAP.md](Plans/ROADMAP.md) — Feature plans, development goals, and roadmap
-- [Notes/ARCHITECTURE_NOTES.md](Notes/ARCHITECTURE_NOTES.md) — Technical specifications, architecture notes, and integration details
-- [Issues/KNOWN_ISSUES.md](Issues/KNOWN_ISSUES.md) — Bug tracking, known edge cases, and active tasks
+## 📁 Document Categories
+
+### Issues
+- [Known Issues](Issues/KNOWN_ISSUES.md)
+
+### Notes
+- [Architecture Notes](Notes/ARCHITECTURE_NOTES.md)
+
+### Plans
+- [Roadmap](Plans/ROADMAP.md)
 
 ---
 *Aligned with `APK:Documentation` standards.*
