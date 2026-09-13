@@ -1,4 +1,4 @@
 # Architecture Notes & Technical Specs — Read.Like.audio
 
-## 🛠 Integration Details
-Integrates with `APK:Documentation` GFM rendering rules and internal file link resolvers.
+## 🛠 Technical Specifications & Integration
+Integrates with `APK:Documentation` GFM rendering rules, custom markdown alert block styling, and internal file link resolvers (`file://`).
