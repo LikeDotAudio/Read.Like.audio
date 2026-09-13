@@ -1,0 +1,13 @@
+{
+  "id": "Read",
+  "name": "Read",
+  "icon": "🗣",
+  "group": "Pipeline",
+  "subGroup": "01 · Event",
+  "kind": "web",
+  "class": "execution",
+  "app": "APK:Softapps/Read/src/index.html",
+  "description": "EVENT: INTAKE — paste anything and hear it. Strips markup, expands units so 6.7ms is read as milliseconds, skips serial numbers, splits on headings into chapters, and teleprompts the chunk it is speaking. Position, text and favourites survive the tab closing.",
+  "topic": "APK.audio/Gui/Display/Read",
+  "autostart": false
+}
